@@ -1,4 +1,4 @@
-// FIT-EASY 公式YouTube「マシン使い方動画」プレイリストの動画をもとにしたマシン一覧
+// YouTube「マシン使い方動画」プレイリストの動画をもとにしたマシン一覧
 // 動画: https://www.youtube.com/playlist?list=PLkZ_htCg75ihbQaGtCjxa1QUz-zqGeNow
 // マシンを追加するときは、この配列に1件追加するだけでOKです。
 // category: chest | back | shoulder | arm | leg | hip | abs | full | cardio | other
