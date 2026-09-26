@@ -36,7 +36,7 @@
       return (m.name + m.target + CATEGORIES[m.category]).toLowerCase().includes(q);
     });
 
-    count.textContent = `${list.length} 台のマシン`;
+    count.textContent = `${list.length} 件`;
     grid.innerHTML = "";
     if (!list.length) {
       grid.innerHTML = '<li class="empty">該当するマシンがありません</li>';
@@ -48,7 +48,7 @@
         <button class="card" type="button">
           <div class="thumb">
             <img src="${thumb(m.videoId)}" alt="${m.name}" loading="lazy" />
-            <span class="no">No.${pad(m.no)}</span>
+            ${m.credit ? '<span class="no ref">参考動画</span>' : `<span class="no">No.${pad(m.no)}</span>`}
             <span class="play" aria-hidden="true"></span>
           </div>
           <div class="info">
@@ -67,6 +67,9 @@
     document.getElementById("d-target").textContent = m.target;
     document.getElementById("d-steps").innerHTML = m.steps.map((s) => `<li>${s}</li>`).join("");
     document.getElementById("d-tips").textContent = m.tips;
+    const cr = document.getElementById("d-credit");
+    cr.textContent = m.credit ? `動画：${m.credit}（他のジム・トレーナーによる参考動画です。店舗のマシンと形が違う場合があります）` : "";
+    cr.hidden = !m.credit;
     document.getElementById("d-yt").href = `https://www.youtube.com/watch?v=${m.videoId}`;
     dialog.showModal();
   }
