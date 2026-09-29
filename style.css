@@ -95,3 +95,4 @@ body {
 .footer { color: var(--muted); font-size: .8rem; padding-bottom: 32px; }
 .no.ref { background: rgba(37, 99, 235, .85); }
 .credit { font-size: .8rem; color: var(--muted); margin: 0 0 6px; }
+.brand { margin: 6px 0 0; font-size: .7rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); }

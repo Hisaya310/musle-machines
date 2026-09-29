@@ -15,7 +15,7 @@
 
   // 部位フィルター
   Object.entries(CATEGORIES).forEach(([key, label]) => {
-    if (key !== "all" && !MACHINES.some((m) => m.category === key)) return;
+    if (key !== "all" && key !== "hammer" && !MACHINES.some((m) => m.category === key)) return;
     const b = document.createElement("button");
     b.className = "chip";
     b.textContent = label;
@@ -31,9 +31,10 @@
   function render() {
     const q = search.value.trim().toLowerCase();
     const list = MACHINES.filter((m) => {
-      if (current !== "all" && m.category !== current) return false;
+      if (current === "hammer") { if (!m.brand) return false; }
+      else if (current !== "all" && m.category !== current) return false;
       if (!q) return true;
-      return (m.name + m.target + CATEGORIES[m.category]).toLowerCase().includes(q);
+      return (m.name + m.target + CATEGORIES[m.category] + (m.brand || "") + "ハンマー".repeat(m.brand ? 1 : 0)).toLowerCase().includes(q);
     });
 
     count.textContent = `${list.length} 件`;
@@ -53,7 +54,7 @@
           </div>
           <div class="info">
             <h2>${m.name}</h2>
-            <p class="tag">${m.target}</p>
+            <p class="tag">${m.target}</p>${m.brand ? `<p class="brand">${m.brand}</p>` : ""}
           </div>
         </button>`;
       li.querySelector("button").onclick = () => open(m);
